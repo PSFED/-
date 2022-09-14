@@ -2,7 +2,7 @@ import { useState, useRef } from 'react'
 import Input from '../UI/Input/Input'
 import styles from './MealItemForm.module.css'
 
-const MealItemForm = ({ id, onAddToCart }) => {
+const MealItemForm = (props) => {
   const [isAmountValid, setIsAmountValid] = useState(true)
   const amountInputRef = useRef()
 
@@ -19,7 +19,7 @@ const MealItemForm = ({ id, onAddToCart }) => {
       return
     }
 
-    onAddToCart(+inputAmount)
+    props.onAddToCart(+inputAmount)
   }
 
   return (
@@ -28,7 +28,7 @@ const MealItemForm = ({ id, onAddToCart }) => {
         ref={amountInputRef}
         label="Количество"
         input={{
-          id: id,
+          id: props.id,
           type: 'number',
           min: '1',
           step: '1',
